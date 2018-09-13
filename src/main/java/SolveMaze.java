@@ -16,6 +16,7 @@ public class SolveMaze {
      * @param unused unused input arguments
      */
 
+
     public static void main(final String[] unused) {
         /*
          * Create a new 10 x 10 maze. Feel free to change these values.
@@ -35,12 +36,20 @@ public class SolveMaze {
          */
         for (int step = 0; step < 1000; step++) {
             // Implement your maze solving algorithm here
+            while (!maze.isFinished()) {
+                maze.turnRight();
+                while (!maze.canMove()) {
+                    maze.turnLeft();
+                }
+                maze.move();
+            }
         }
+            if (maze.isFinished()) {
+                System.out.println("You solved the maze!");
 
-        if (maze.isFinished()) {
-            System.out.println("You solved the maze!");
-        } else {
-            System.out.println("Try again!");
-        }
+            } else {
+                System.out.println("Try again!");
+            }
+
     }
 }
